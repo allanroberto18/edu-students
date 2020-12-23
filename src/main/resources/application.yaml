@@ -5,20 +5,27 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
 
   datasource:
-    url: jdbc:mysql${MYSQL_HOST:localhost}:3306/${MYSQL_DATABASE:some_db}
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${MYSQL_DATABASE:some_db}
     username: ${MYSQL_USER:root}
     password: ${MYSQL_PASSWORD:root}
     driverClassName: org.mariadb.jdbc.Driver
 
   flyway:
-    url: jdbc:mysql${MYSQL_HOST:localhost}:3306/${MYSQL_DATABASE:some_db}
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${MYSQL_DATABASE:some_db}
     schemas: ${MYSQL_DATABASE:some_db}
-    username: ${MYSQL_USER:root}
+    user: ${MYSQL_USER:root}
     password: ${MYSQL_PASSWORD:root}
     locations: classpath:db/migration
+    baseline-on-migrate: true
+    ignore-missing-migrations: true
+    out-of-order: true
     enabled: true
+
 
   redis:
     database: ${REDIS_DATABASE:3}
