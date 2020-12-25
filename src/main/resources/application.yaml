@@ -26,7 +26,6 @@ spring:
     out-of-order: true
     enabled: true
 
-
   redis:
     database: ${REDIS_DATABASE:3}
     host: ${REDIS_HOST:localhost}
