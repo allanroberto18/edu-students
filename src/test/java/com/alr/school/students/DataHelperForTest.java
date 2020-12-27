@@ -34,6 +34,13 @@ public class DataHelperForTest {
             .build();
     }
 
+    public static Student buildStudent(Integer id, String firstName, String lastName, String email) {
+        Student student = buildStudent(firstName, lastName, email);
+        student.setId(id);
+
+        return student;
+    }
+
     public static String convertToJson(Object object) throws JsonProcessingException {
         ObjectMapper Obj = new ObjectMapper();
         return Obj.writeValueAsString(object);

@@ -19,6 +19,7 @@ public class StudentDTO {
     @NotBlank(message = "Last name is required")
     private String lastName;
 
-    @Email
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email")
     private String email;
 }
